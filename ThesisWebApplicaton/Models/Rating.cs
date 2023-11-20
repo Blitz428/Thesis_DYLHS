@@ -11,10 +11,16 @@ namespace Thesis.Models
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
         public string? _Id { get; set; }
+
+        [BsonRepresentation(BsonType.ObjectId)]
+        [BsonElement("created_by")]
         public string Created_by { get; set; }
+
+        [BsonElement("review")]
         public string Review { get; set; }
+
+        [BsonElement("rating")]
         public int Ratings {  get; set; }
-        public DateTime Timestamp { get; set; }
 
     }
 }

@@ -12,25 +12,36 @@ namespace Thesis.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string? _Id { get; set; }
 
+        [BsonElement("name")]
         public string Name { get; set; }
 
+        [BsonElement("description")]
         public string Description { get; set; }
 
+        [BsonRepresentation(BsonType.ObjectId)]
+        [BsonElement("created_by")]
         public string Created_by { get; set; }
-        public enum Type { type1, type2, type3, type4 }
 
+        [BsonElement("type")]
+        public string Type { get; set; }
+
+        [BsonElement("alcohol")]
         public double Alcohol { get; set; }
 
-        public int Kcal { get; set; }
+        [BsonElement("kcal")]
+        public double Kcal { get; set; }
 
+        [BsonElement("fat")]
         public double Fat { get; set; }
 
+        [BsonElement("protein")]
         public double Protein { get; set; }
 
+        [BsonElement("carbon")]
         public double Carbon { get; set; }
 
+        [BsonElement("verified")]
         public bool Verified { get; set; }
 
-        public DateTime Timestamp { get; set; }
     }
 }

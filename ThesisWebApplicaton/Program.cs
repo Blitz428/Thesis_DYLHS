@@ -5,7 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.Configure<IngredientDatabaseSettings>(
+builder.Services.Configure<DrinkDatabaseSettings>(
     builder.Configuration.GetSection("DrinksDatabase"));
 
 builder.Services.Configure<IngredientDatabaseSettings>(
