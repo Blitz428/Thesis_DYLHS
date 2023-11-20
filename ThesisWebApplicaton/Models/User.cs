@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MongoDB.Bson.Serialization.Attributes;
+using MongoDB.Bson;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,7 +8,9 @@ namespace Thesis.Models
 {
     public class User
     {
-        public int _Id { get; set; }
+        [BsonId]
+        [BsonRepresentation(BsonType.ObjectId)]
+        public string? _Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
         public enum Role { role1,role2 }
