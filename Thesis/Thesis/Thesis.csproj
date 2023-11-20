@@ -17,6 +17,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\" />
+    <Folder Include="Endpoint\Services\" />
+    <Folder Include="Windows\" />
+    <Folder Include="ViewModels\" />
+    <Folder Include="Test\" />
   </ItemGroup>
 </Project>
