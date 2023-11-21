@@ -31,8 +31,7 @@
             <DatePicker Grid.Column="1" Grid.Row="5" MinimumDate="1900-01-01" MaximumDate="2018-12-31"/>
             <Label Grid.Column="1" Grid.Row="6" HorizontalTextAlignment="Start" VerticalTextAlignment="End">Neme (férfi/nő):</Label>
             <Switch Grid.Column="1" Grid.Row="7" VerticalOptions="Start" HorizontalOptions="Start" OnColor="HotPink" ThumbColor="Blue" />
-            <Button Grid.Column="1" Grid.Row="9" Margin="10,10,10,0" Text="Regisztráció véglegesítése" />
-
+            <Button Grid.Column="1" Grid.Row="9" Margin="10,10,10,0" Text="Regisztráció véglegesítése" Clicked="Register" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

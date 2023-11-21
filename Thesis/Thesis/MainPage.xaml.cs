@@ -18,11 +18,11 @@ namespace Thesis
 
         async void Login_pressed(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Login());
+            await Navigation.PushAsync(new login_screen());
         }
         async void Register_pressed(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new Register());
+            await Navigation.PushAsync(new registration_page());
         }
     }
 }

@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Thesis.Windows
+namespace Thesis.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class registration_personal_data : ContentPage
+    public partial class main_menu : ContentPage
     {
-        public registration_personal_data()
+        public main_menu()
         {
             InitializeComponent();
         }

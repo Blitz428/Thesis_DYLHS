@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Thesis.Windows.Register"
+             x:Class="Thesis.Windows.registration_page"
              Title="Regisztráció">
     <ContentPage.Content>
         <Grid>
@@ -31,7 +31,7 @@
             <Entry Grid.Column="1" Grid.Row="5" VerticalOptions="Start" Text="06201234567" Keyboard="Numeric" />
             <Label Grid.Column="1" Grid.Row="6" HorizontalTextAlignment="Start" VerticalTextAlignment="End">Adjon meg egy jelszót:</Label>
             <Entry Grid.Column="1" Grid.Row="7" VerticalOptions="Start" Text="admin" IsPassword="true"  />
-            <Button Grid.Column="1" Grid.Row="9" Margin="10,10,10,0" Text="Következő" Clicked="Button_Clicked"/>
+            <Button Grid.Column="1" Grid.Row="9" Margin="10,10,10,0" Text="Következő" Clicked="Next"/>
 
         </Grid>
     </ContentPage.Content>

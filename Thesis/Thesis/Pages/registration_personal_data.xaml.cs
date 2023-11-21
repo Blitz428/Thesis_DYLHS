@@ -3,23 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Thesis.Pages;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Thesis.Windows
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Register : ContentPage
+    public partial class registration_personal_data : ContentPage
     {
-        public Register()
+        async void Register(object sender, EventArgs e)
         {
-            InitializeComponent();
-        }
-
-        async void Button_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushAsync(new registration_personal_data());
+            await Navigation.PushAsync(new main_menu());
 
         }
     }

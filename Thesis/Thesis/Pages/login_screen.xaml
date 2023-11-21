@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Thesis.Windows.Login"
+             x:Class="Thesis.Windows.login_screen"
              Title="Belépés">
     <ContentPage.Content>
         <Grid>
@@ -23,8 +23,8 @@
             <Label Grid.Column="1" Grid.Row="0"  HorizontalTextAlignment="Start" VerticalTextAlignment="End" >Felhasználónév:</Label>
             <Entry Grid.Column="1" Grid.Row="3" VerticalOptions="Start" Text="admin" />
             <Label Grid.Column="1" Grid.Row="2" HorizontalTextAlignment="Start" VerticalTextAlignment="End">Jelszó:</Label>
-            <Button Grid.Column="1" Grid.Row="4" Margin="10,10,10,10" Text="Elfelejtett jelszó" Clicked="Button_Clicked" BackgroundColor="#00000000" TextColor="DarkRed"/>
-            <Button Grid.Column="1" Grid.Row="5" Margin="10,10,10,10" Text="Belépés" Clicked="Button_Clicked"/>
+            <Button Grid.Column="1" Grid.Row="4" Margin="10,10,10,10" Text="Elfelejtett jelszó" Clicked="Forgot_password" BackgroundColor="#00000000" TextColor="DarkRed"/>
+            <Button Grid.Column="1" Grid.Row="5" Margin="10,10,10,10" Text="Belépés" Clicked="Login_"/>
 
         </Grid>
     </ContentPage.Content>
