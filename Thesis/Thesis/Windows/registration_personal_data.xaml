@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Thesis.Windows.registration_personal_data"
+             Title= "Adja meg a személyes adatait">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="2*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Label Grid.Column="1" Grid.Row="0"  HorizontalTextAlignment="Start" VerticalTextAlignment="End" >Magasság:</Label>
+            <Entry Grid.Column="1" Grid.Row="1" VerticalOptions="Start" Text="180" HorizontalOptions="Fill" Keyboard="Numeric"/>
+            <Label Grid.Column="1" Grid.Row="2"  HorizontalTextAlignment="Start" VerticalTextAlignment="End" >Testsúly:</Label>
+            <Entry Grid.Column="1" Grid.Row="3" VerticalOptions="Start" Text="80" HorizontalOptions="Fill" Keyboard="Numeric"/>
+            <Label Grid.Column="1" Grid.Row="4" HorizontalTextAlignment="Start" VerticalTextAlignment="End">Születési dátum (nap,hónap,év):</Label>
+            <DatePicker Grid.Column="1" Grid.Row="5" MinimumDate="1900-01-01" MaximumDate="2018-12-31"/>
+            <Label Grid.Column="1" Grid.Row="6" HorizontalTextAlignment="Start" VerticalTextAlignment="End">Neme (férfi/nő):</Label>
+            <Switch Grid.Column="1" Grid.Row="7" VerticalOptions="Start" HorizontalOptions="Start" OnColor="HotPink" ThumbColor="Blue" />
+            <Button Grid.Column="1" Grid.Row="9" Margin="10,10,10,0" Text="Regisztráció véglegesítése" />
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

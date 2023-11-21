@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Thesis.Windows.Login"
+             Title="Belépés">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="0.5*" />
+                <RowDefinition Height="2*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="5*"/>
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Entry Grid.Column="1" Grid.Row="1" VerticalOptions="Start" Text="admin" HorizontalOptions="Fill"/>
+            <Label Grid.Column="1" Grid.Row="0"  HorizontalTextAlignment="Start" VerticalTextAlignment="End" >Felhasználónév:</Label>
+            <Entry Grid.Column="1" Grid.Row="3" VerticalOptions="Start" Text="admin" />
+            <Label Grid.Column="1" Grid.Row="2" HorizontalTextAlignment="Start" VerticalTextAlignment="End">Jelszó:</Label>
+            <Button Grid.Column="1" Grid.Row="4" Margin="10,10,10,10" Text="Elfelejtett jelszó" Clicked="Button_Clicked" BackgroundColor="#00000000" TextColor="DarkRed"/>
+            <Button Grid.Column="1" Grid.Row="5" Margin="10,10,10,10" Text="Belépés" Clicked="Button_Clicked"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

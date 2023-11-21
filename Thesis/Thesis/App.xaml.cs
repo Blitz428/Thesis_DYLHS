@@ -10,7 +10,7 @@ namespace Thesis
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new Thesis.MainPage());
         }
 
         protected override void OnStart()

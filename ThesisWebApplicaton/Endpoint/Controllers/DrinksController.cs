@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Thesis.Models;
 using ThesisApi.Services;
-using ThesisWebApplicaton;
 
 namespace ThesisApi.Endpoint.Controllers
 {
