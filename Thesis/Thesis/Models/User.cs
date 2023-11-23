@@ -43,6 +43,10 @@ namespace Thesis.Models
         [BsonElement("points")]
         public double Points { get; set; }
 
+        [BsonElement("birthday")]
+        public DateTime Birthday { get; set; }
+
+
         public event PropertyChangedEventHandler PropertyChanged;
         protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {

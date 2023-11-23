@@ -14,11 +14,14 @@ namespace Thesis.Windows
     {
         public registration_personal_data()
         {
+            this.BindingContext = App.RSViewModel;
             InitializeComponent();
         }
         async void Register(object sender, EventArgs e)
         {
+            await App.RSViewModel.CreateUserAsync();
             await Navigation.PushAsync(new main_menu());
+
 
         }
     }

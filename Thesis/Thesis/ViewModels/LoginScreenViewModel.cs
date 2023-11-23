@@ -13,6 +13,7 @@ namespace Thesis.ViewModels
     {
         IRestService restService;
 
+
         private string username = string.Empty;
         public string Username
         {

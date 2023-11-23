@@ -18,9 +18,7 @@ namespace Thesis.Windows
         public login_screen()
         {
             this.BindingContext = App.LSViewModel;
-
             
-
             InitializeComponent();
         }
 
@@ -29,9 +27,20 @@ namespace Thesis.Windows
         {
          
             await App.LSViewModel.FindUserAsync();
-            
-               await Navigation.PushAsync(new main_menu());
-            
+            if (App.restService.CredentialChecker[0].Equals(true))
+            {
+                await DisplayAlert("Hiba", "Hibás jelszó.", "OK");
+            }else
+            if (App.restService.CredentialChecker[1].Equals(true))
+            {
+                await DisplayAlert("Hiba", "Hibás felhasználónév vagy jelszó.", "OK");
+            }
+            else
+            {
+                await Navigation.PushAsync(new main_menu());
+            }
+
+
         }
 
         async void Forgot_password(object sender, EventArgs e)

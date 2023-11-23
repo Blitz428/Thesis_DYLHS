@@ -31,6 +31,9 @@ namespace Thesis.Models
         [BsonElement("role")]
         public string Role { get; set; }
 
+        [BsonElement("birthday")]
+        public DateTime Birthday { get; set; }
+
         [BsonElement("points")]
         public double Points { get; set; }
 

@@ -8,12 +8,15 @@ namespace Thesis
 {
     public partial class App : Application
     {
+        public static RestService restService { get; private set; }
         public static LoginScreenViewModel LSViewModel { get; private set; }
+        public static RegistrationViewModel RSViewModel { get; private set; }
 
         public App()
         {
-            
-            LSViewModel = new LoginScreenViewModel(new RestService());
+            restService = new RestService();
+            LSViewModel = new LoginScreenViewModel(restService);
+            RSViewModel = new RegistrationViewModel(restService);
             MainPage = new NavigationPage(new Thesis.MainPage());
         }
 

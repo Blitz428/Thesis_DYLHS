@@ -14,6 +14,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using System.Windows;
 using Thesis.Models;
+using ThesisApi.Models;
 using Xamarin.Forms;
 using static Android.Content.ClipData;
 
@@ -34,7 +35,8 @@ namespace Thesis
             serializerOptions = new JsonSerializerOptions
             {
                 PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
-                WriteIndented = true
+                WriteIndented = true,
+                IncludeFields = true  
             };
         }
 
@@ -115,6 +117,7 @@ namespace Thesis
         {
             List<User> Items = new List<User>();
             user = new User();
+            CredentialChecker = new bool[3] { false, false, false };
 
             Uri uri = new Uri(string.Format(url, "Users"));
             try
@@ -127,18 +130,30 @@ namespace Thesis
 
                     foreach (User item in Items)
                     {
-                        if (item.Username.Equals(username) && item.Password.Equals(password))
+                        if (item.Username.Equals(username))
                         {
-                            user._Id = item._Id;
-                            user.Password = item.Password;
-                            user.Points = item.Points;
-                            user.Email = item.Email;
-                            user.Mobile = item.Mobile;
-                            user.Role = item.Role;
-                            user.Body_data = item.Body_data;
+                            if (item.Password.Equals(password))
+                            {
+                                user._Id = item._Id;
+                                user.Password = item.Password;
+                                user.Points = item.Points;
+                                user.Email = item.Email;
+                                user.Mobile = item.Mobile;
+                                user.Role = item.Role;
+                                user.Body_data = item.Body_data;
+                                user.Birthday = item.Birthday;
+                            }
+                            else
+                            {
+                                CredentialChecker[0] = true;
+                            }
+                          
                         }
+
                     }
+                    if (!user.Password.Equals(password)) { CredentialChecker[1] = true; }
                 }
+               
             }
             catch (Exception ex)
             {
@@ -148,10 +163,13 @@ namespace Thesis
             return user;
         }
 
-        public async Task CreateUserAsync(string url, string username, string password, string email, double mobile, double points, bool gender, double weight, double height)
+        public async Task CreateUserAsync(string url, string username, string password, string email, double mobile, double points, bool gender, double weight, double height, DateTime birthday)
         {
             List<User> Items = new List<User>();
             user = new User();
+            BodyData bodyData;
+            
+            
 
             if (UserExists.Equals(false))
             {
@@ -159,11 +177,9 @@ namespace Thesis
                 user.Password = password;
                 user.Email = email;
                 user.Mobile = mobile;
-                user.Points = points;
-                user.Body_data.Weight = weight;
-                user.Body_data.Height = height;
-                user.Body_data.Gender = gender;
-
+                user.Body_data= new BodyData(gender,weight,height);
+                user.Birthday = birthday;
+                user.Role = "user";
 
             }
 
@@ -195,17 +211,17 @@ namespace Thesis
         bool userExists;
         public bool UserExists { get { return userExists; } set { userExists = value; } }
 
-        bool emailUsed;
-        public bool EmailUsed { get { return emailUsed; } set { emailUsed = value; } }
+ 
 
-        bool mobileUsed;
-        public bool MobileUsed { get { return mobileUsed; } set { mobileUsed = value; } }
+        bool[] credentialChecker;
+        public bool[] CredentialChecker { get {  return credentialChecker; } set { credentialChecker = value; } }
 
-
-        public async Task CheckUserExistsAsync(string url, string username, string password, string email, double mobile)
+        public async Task<bool[]> CheckUserExistsAsync(string url, string username, string password, string email, double mobile)
         {
             List<User> Items = new List<User>();
-            userExists = false;
+            
+            CredentialChecker = new bool[3] {false,false,false };
+
 
             Uri uri = new Uri(string.Format(url, "Users"));
             try
@@ -218,27 +234,32 @@ namespace Thesis
 
                     foreach (User item in Items)
                     {
-                        if (item.Username.Equals(username) && item.Password.Equals(password) )
+                        if (item.Username.Equals(username))
                         {
-                            UserExists = true;
+                            CredentialChecker[0] = true;
+                            
                         }
                         if (item.Email.Equals(email))
                         {
-                            EmailUsed = true;
+                            CredentialChecker[1] = true;
                         }
                         if (item.Mobile.Equals(mobile))
                         {
-                            MobileUsed = true;
+                            CredentialChecker[2] = true;
                         }
                     }
                 }
+                
+                
+
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(@"\tERROR {0}", ex.Message);
             }
-
             
+            return CredentialChecker;
+
         }
 
     }

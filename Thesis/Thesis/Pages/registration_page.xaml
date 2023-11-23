@@ -1,8 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:converter="clr-namespace:Thesis.Converters"
              x:Class="Thesis.Windows.registration_page"
              Title="Regisztráció">
+    <ContentPage.Resources>
+        <converter:AnyNullValueCheckConverter x:Key="AnyNullValueCheckConverter" />
+        <converter:ButtonColorConverter x:Key="ButtonColorConverter"/>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -24,14 +29,31 @@
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
             <Label Grid.Column="1" Grid.Row="0"  HorizontalTextAlignment="Start" VerticalTextAlignment="End" >Adjon meg egy felhasználónevet:</Label>
-            <Entry Grid.Column="1" Grid.Row="1" VerticalOptions="Start" Text="admin" HorizontalOptions="Fill"/>
+            <Entry Grid.Column="1" Grid.Row="1" VerticalOptions="Start" Text="{Binding Username}" HorizontalOptions="Fill"/>
             <Label Grid.Column="1" Grid.Row="2" HorizontalTextAlignment="Start" VerticalTextAlignment="End">Adjon meg egy e-mail címet:</Label>
-            <Entry Grid.Column="1" Grid.Row="3" VerticalOptions="Start" Text="admin@admin.com"  Keyboard="Email"/>
+            <Entry Grid.Column="1" Grid.Row="3" VerticalOptions="Start" Text="{Binding Email}"  Keyboard="Email"/>
             <Label Grid.Column="1" Grid.Row="4" HorizontalTextAlignment="Start" VerticalTextAlignment="End">Adja meg a telefonszámát:</Label>
-            <Entry Grid.Column="1" Grid.Row="5" VerticalOptions="Start" Text="06201234567" Keyboard="Numeric" />
+            <Entry Grid.Column="1" Grid.Row="5" VerticalOptions="Start" Text="{Binding Mobile}" Keyboard="Numeric" />
             <Label Grid.Column="1" Grid.Row="6" HorizontalTextAlignment="Start" VerticalTextAlignment="End">Adjon meg egy jelszót:</Label>
-            <Entry Grid.Column="1" Grid.Row="7" VerticalOptions="Start" Text="admin" IsPassword="true"  />
-            <Button Grid.Column="1" Grid.Row="9" Margin="10,10,10,0" Text="Következő" Clicked="Next"/>
+            <Entry Grid.Column="1" Grid.Row="7" VerticalOptions="Start" Text="{Binding Password}" IsPassword="true"  />
+            <Button Grid.Column="1" Grid.Row="9" Margin="10,10,10,0" Text="Következő" Clicked="Next">
+                <Button.IsEnabled>
+                    <MultiBinding Converter="{StaticResource AnyNullValueCheckConverter}">
+                        <Binding Path="Username" />
+                        <Binding Path="Password" />
+                        <Binding Path="Email" />
+                        <Binding Path="Mobile" />
+                    </MultiBinding>
+                </Button.IsEnabled>
+                <Button.BackgroundColor>
+                    <MultiBinding Converter="{StaticResource ButtonColorConverter}">
+                        <Binding Path="Username"/>
+                        <Binding Path="Password"/>
+                        <Binding Path="Email" />
+                        <Binding Path="Mobile" />
+                    </MultiBinding>
+                </Button.BackgroundColor>
+            </Button>
 
         </Grid>
     </ContentPage.Content>

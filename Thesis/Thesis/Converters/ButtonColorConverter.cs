@@ -12,14 +12,14 @@ namespace Thesis.Converters
         {
             if (values == null)
             {
-                return Color.Gray;
+                return Color.LightGray;
             }
 
             foreach (var value in values)
             {
                 if (value is string str && string.IsNullOrEmpty(str))
                 {
-                    return Color.Gray;
+                    return Color.LightGray;
                 }
             }
             return Color.FromHex("#2196F3");
