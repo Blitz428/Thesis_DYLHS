@@ -1,8 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:converter="clr-namespace:Thesis.Converters"
              x:Class="Thesis.Windows.login_screen"
              Title="Belépés">
+    <ContentPage.Resources>
+        <converter:AnyNullValueCheckConverter x:Key="AnyNullValueCheckConverter" />
+        <converter:ButtonColorConverter x:Key="ButtonColorConverter"/>
+    </ContentPage.Resources>
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
@@ -19,12 +24,26 @@
                 <ColumnDefinition Width="5*"/>
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <Entry Grid.Column="1" Grid.Row="1" VerticalOptions="Start" Text="admin" HorizontalOptions="Fill"/>
+            <Entry  Grid.Column="1" Grid.Row="1" VerticalOptions="Start" Text="{Binding Username}" HorizontalOptions="Fill"/>
             <Label Grid.Column="1" Grid.Row="0"  HorizontalTextAlignment="Start" VerticalTextAlignment="End" >Felhasználónév:</Label>
-            <Entry Grid.Column="1" Grid.Row="3" VerticalOptions="Start" Text="admin" />
+            <Entry  Grid.Column="1" Grid.Row="3" VerticalOptions="Start"   Text="{Binding Password}" />
             <Label Grid.Column="1" Grid.Row="2" HorizontalTextAlignment="Start" VerticalTextAlignment="End">Jelszó:</Label>
             <Button Grid.Column="1" Grid.Row="4" Margin="10,10,10,10" Text="Elfelejtett jelszó" Clicked="Forgot_password" BackgroundColor="#00000000" TextColor="DarkRed"/>
-            <Button Grid.Column="1" Grid.Row="5" Margin="10,10,10,10" Text="Belépés" Clicked="Login_"/>
+            <Button Grid.Column="1" Grid.Row="5" Clicked="Login_" Text="Bejelentkezés">
+                <Button.IsEnabled>
+                    <MultiBinding Converter="{StaticResource AnyNullValueCheckConverter}">
+                        <Binding Path="Username" />
+                        <Binding Path="Password" />
+                    </MultiBinding>
+                </Button.IsEnabled>
+                <Button.BackgroundColor>
+                    <MultiBinding Converter="{StaticResource ButtonColorConverter}">
+                        <Binding Path="Username"/>
+                        <Binding Path="Password"/>
+                    </MultiBinding>
+                </Button.BackgroundColor>
+                
+            </Button>
 
         </Grid>
     </ContentPage.Content>

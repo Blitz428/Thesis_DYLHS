@@ -12,6 +12,10 @@ namespace Thesis.Windows
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class registration_personal_data : ContentPage
     {
+        public registration_personal_data()
+        {
+            InitializeComponent();
+        }
         async void Register(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new main_menu());
