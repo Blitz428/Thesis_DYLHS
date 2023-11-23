@@ -1,8 +1,5 @@
-﻿using System;
-using Thesis.ViewModels;
-using Thesis.Windows;
+﻿using Thesis.ViewModels;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace Thesis
 {

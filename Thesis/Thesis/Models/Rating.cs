@@ -1,8 +1,5 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 
 namespace Thesis.Models
 {
@@ -20,7 +17,7 @@ namespace Thesis.Models
         public string Review { get; set; }
 
         [BsonElement("rating")]
-        public int Ratings {  get; set; }
+        public int Ratings { get; set; }
 
     }
 }

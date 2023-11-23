@@ -1,9 +1,5 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
 using Thesis.Models;
 
@@ -25,7 +21,7 @@ namespace Thesis.ViewModels
                     username = value;
                     NotifyPropertyChanged();
                 }
-                
+
             }
         }
 
@@ -41,8 +37,8 @@ namespace Thesis.ViewModels
                     password = value;
                     NotifyPropertyChanged();
                 }
-                 
-            } 
+
+            }
         }
 
 

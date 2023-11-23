@@ -1,5 +1,4 @@
 ﻿using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Driver.Core.Operations;
 
 namespace ThesisApi.Models
 {
@@ -16,7 +15,7 @@ namespace ThesisApi.Models
 
         public BodyData()
         {
-            
+
         }
 
     }

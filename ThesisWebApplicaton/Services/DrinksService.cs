@@ -1,8 +1,9 @@
-﻿namespace ThesisApi.Services { 
-using Microsoft.Extensions.Options;
-using MongoDB.Driver;
-using Thesis.Models;
-using Thesis.Repository;
+﻿namespace ThesisApi.Services
+{
+    using Microsoft.Extensions.Options;
+    using MongoDB.Driver;
+    using Thesis.Models;
+    using Thesis.Repository;
 
     public class DrinksService
     {

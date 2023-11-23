@@ -1,8 +1,5 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson;
-using System;
-using System.Collections.Generic;
-using System.Text;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using ThesisApi.Models;
 
 namespace Thesis.Models
@@ -20,7 +17,7 @@ namespace Thesis.Models
         public string Password { get; set; }
 
         [BsonElement("mobile")]
-        public double Mobile {  get; set; }
+        public double Mobile { get; set; }
 
         [BsonElement("email")]
         public string Email { get; set; }

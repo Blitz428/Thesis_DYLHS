@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using MongoDB.Bson;
+﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 
 namespace Thesis.Models
@@ -29,7 +26,7 @@ namespace Thesis.Models
         public double Alcohol { get; set; }
 
         [BsonElement("kcal")]
-        public double Kcal {  get; set; }
+        public double Kcal { get; set; }
 
         [BsonElement("fat")]
         public double Fat { get; set; }
@@ -46,10 +43,10 @@ namespace Thesis.Models
         [BsonElement("verified")]
         public bool Verified { get; set; }
 
-       
+
         public ICollection<string> Ingredients { get; set; }
 
-  
+
         public ICollection<string> Ratings { get; set; }
 
 

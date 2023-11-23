@@ -1,15 +1,8 @@
-﻿using CommunityToolkit.Mvvm.ComponentModel;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using CommunityToolkit.Mvvm.Input;
+﻿using System;
 using System.ComponentModel;
-using System.Windows.Input;
-using Thesis.Models;
-using Microsoft.Extensions.DependencyInjection;
-using ThesisApi.Models;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using Thesis.Models;
 
 
 namespace Thesis.ViewModels
@@ -116,10 +109,10 @@ namespace Thesis.ViewModels
             get { return gender; }
             set
             {
-              
-                    gender = value;
-                    NotifyPropertyChanged();
-                
+
+                gender = value;
+                NotifyPropertyChanged();
+
 
             }
         }
@@ -179,9 +172,9 @@ namespace Thesis.ViewModels
 
         public Task<bool[]> CheckUserAsync()
         {
-           
+
             return _restService.CheckUserExistsAsync("http://10.0.2.2:5096/api/{0}", Username, Password, Email, Mobile);
-            
+
         }
 
         public Task CreateUserAsync()
