@@ -132,7 +132,7 @@ namespace Thesis
                     {
                         if (item.Username.Equals(username))
                         {
-                            if (item.Password.Equals(password))
+                            if (User.DecryptPassword(item.Password).Equals(password))
                             {
                                 user._Id = item._Id;
                                 user.Password = item.Password;
@@ -151,7 +151,7 @@ namespace Thesis
                         }
 
                     }
-                    if (!user.Password.Equals(password)) { CredentialChecker[1] = true; }
+                    if (!user.Password.Equals(User.EncryptPassword(password))) { CredentialChecker[1] = true; }
                 }
                
             }
@@ -174,7 +174,7 @@ namespace Thesis
             if (UserExists.Equals(false))
             {
                 user.Username = username;
-                user.Password = password;
+                user.Password = User.EncryptPassword(password);
                 user.Email = email;
                 user.Mobile = mobile;
                 user.Body_data= new BodyData(gender,weight,height);

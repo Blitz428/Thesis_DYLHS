@@ -7,6 +7,8 @@ using ThesisApi.Models;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Security.Cryptography;
+using System.IO;
 
 namespace Thesis.Models
 {
@@ -51,6 +53,51 @@ namespace Thesis.Models
         protected virtual void NotifyPropertyChanged([CallerMemberName] string propertyName = "")
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public static string  EncryptPassword(string password)
+        {
+            RC2CryptoServiceProvider rc2CSP = new RC2CryptoServiceProvider();
+            ICryptoTransform encryptor = rc2CSP.CreateEncryptor(rc2CSP.IV, rc2CSP.Key);
+            using (MemoryStream msEncrypt = new MemoryStream())
+            {
+                using (CryptoStream csEncrypt = new CryptoStream(msEncrypt, encryptor, CryptoStreamMode.Write))
+                {
+                    byte[] toEncrypt = Encoding.Unicode.GetBytes(password);
+
+                    csEncrypt.Write(toEncrypt, 0, toEncrypt.Length);
+                    csEncrypt.FlushFinalBlock();
+
+                    byte[] encrypted = msEncrypt.ToArray();
+
+                    return Convert.ToBase64String(encrypted);
+                }
+            }
+        }
+        public static string DecryptPassword(string password)
+        {
+            RC2CryptoServiceProvider rc2CSP = new RC2CryptoServiceProvider();
+            ICryptoTransform decryptor = rc2CSP.CreateDecryptor(rc2CSP.Key, rc2CSP.IV);
+            using (MemoryStream msDecrypt = new MemoryStream(Convert.FromBase64String(password)))
+            {
+                using (CryptoStream csDecrypt = new CryptoStream(msDecrypt, decryptor, CryptoStreamMode.Read))
+                {
+                    List<Byte> bytes = new List<byte>();
+                    int b;
+                    do
+                    {
+                        b = csDecrypt.ReadByte();
+                        if (b != -1)
+                        {
+                            bytes.Add(Convert.ToByte(b));
+                        }
+
+                    }
+                    while (b != -1);
+
+                    return Encoding.Unicode.GetString(bytes.ToArray());
+                }
+            }
         }
 
     }
