@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Thesis.Pages.dashboard"
+             Title="Dashboard">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1.5*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="2*" />
+            </Grid.RowDefinitions>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Label BackgroundColor="LightGray" Padding="20" Margin="5,5,5,5" Text="Picture"></Label>
+                <Grid Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+  
+                    </Grid.ColumnDefinitions>
+                    <Label  Text="Jelenlegi felhasználó:" Margin="5,5,5,0"></Label>
+                    <Label Grid.Row="1"  Text="Username" HorizontalTextAlignment="Center"></Label>
+                    <Label Grid.Row="2"  Text="Szint: szint"/>
+                </Grid>
+            </Grid>
+            <Label Padding="8" Grid.Row="1" Text="A jelenlegi alkoholszinted:"/>
+            <ProgressBar Grid.Row="1" Scale="6" Margin="15,20,10,0" ></ProgressBar>
+            <Label Padding="10" Grid.Row="2" Text="(jelentés)" HorizontalOptions="Center"></Label>
+            <Label  Padding="10" Grid.Row="3" Text="Józanságig várható idő: idő"></Label>
+            <SearchBar Grid.Row="4" Placeholder="Ital/hozzávaló..."/>
+            <Label Padding="10" Grid.Row="5" Text="Ma estém:"></Label>
+            <ListView Grid.Row="5">
+                
+            </ListView>
+            <Label Padding="10" Grid.Row="6" Text="Fogyasztott alkoholmennyiség: "></Label>
+            <Label Padding="10" Grid.Row="7" Text="Maximális alkoholmennyiség: "></Label>
+            <Grid Grid.Row="8">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <Label HorizontalOptions="Center" VerticalOptions="Center">Kcal</Label>
+
+                <Grid Grid.Row="2" Margin="0,0,0,0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                    <Label HorizontalOptions="Center" VerticalOptions="Center">Szénhidrát</Label>
+                    <Label  Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">Zsír</Label>
+                    <Label Grid.Column="2" HorizontalOptions="Center" VerticalOptions="Center">Fehérje</Label>
+                </Grid>
+            </Grid>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

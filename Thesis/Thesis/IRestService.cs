@@ -7,6 +7,8 @@ namespace Thesis
 {
     public interface IRestService
     {
+
+        User User { get; set; }
         Task<List<T>> RefreshDataAsync<T>(string url);
 
         Task SaveItemAsync<T>(string url, T item, bool isNewItem);

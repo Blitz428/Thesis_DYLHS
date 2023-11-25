@@ -103,7 +103,7 @@
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Resources\drawable\" />
+    <Folder Include="Resources\drawable\userpics\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Thesis\Thesis.csproj">

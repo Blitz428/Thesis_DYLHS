@@ -16,6 +16,7 @@ namespace Thesis
         JsonSerializerOptions serializerOptions;
 
         User user;
+        
 
         public User User { get { return user; } set { User = value; } }
 
@@ -106,7 +107,7 @@ namespace Thesis
         public async Task<User> FindUserAsync(string url, string username, string password)
         {
             List<User> Items = new List<User>();
-            user = new User();
+            user = new User() ;
             CredentialChecker = new bool[3] { false, false, false };
 
             Uri uri = new Uri(string.Format(url, "Users"));
@@ -123,6 +124,7 @@ namespace Thesis
                         if (item.Username.Equals(username))
                         {
                             if (User.DecryptPassword(item.Password).Equals(password))
+                                //if (User.Password.Equals(password))
                             {
                                 user._Id = item._Id;
                                 user.Password = item.Password;
@@ -141,7 +143,13 @@ namespace Thesis
                         }
 
                     }
-                    if (!user.Password.Equals(User.EncryptPassword(password))) { CredentialChecker[1] = true; }
+                    string test = user.Username;
+                    
+                    if (test==null)
+                    {
+                         { CredentialChecker[1] = true; }
+                    }
+                    
                 }
 
             }
@@ -165,6 +173,7 @@ namespace Thesis
             {
                 user.Username = username;
                 user.Password = User.EncryptPassword(password);
+                //user.Password = User.Password;
                 user.Email = email;
                 user.Mobile = mobile;
                 user.Body_data = new BodyData(gender, weight, height);
