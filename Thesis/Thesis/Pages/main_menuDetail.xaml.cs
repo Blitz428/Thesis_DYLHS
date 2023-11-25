@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace Thesis.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class main_menu : TabbedPage
+    public partial class main_menuDetail : ContentPage
     {
-        public main_menu()
+        public main_menuDetail()
         {
             InitializeComponent();
         }
