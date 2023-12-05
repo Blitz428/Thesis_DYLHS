@@ -15,6 +15,7 @@ namespace Thesis.Pages
 		public dashboard ()
 		{
 			BindingContext = App.MPViewModel;
+			App.MPViewModel.SetUser();
 			InitializeComponent ();
 		}
 	}

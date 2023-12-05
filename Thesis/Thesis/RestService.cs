@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Amazon.Runtime.Credentials.Internal;
+using Amazon.Runtime.Internal.Transform;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
@@ -123,10 +125,11 @@ namespace Thesis
                     {
                         if (item.Username.Equals(username))
                         {
-                            if (User.DecryptPassword(item.Password).Equals(password))
-                                //if (User.Password.Equals(password))
-                            {
+                            //if (User.DecryptPassword(item.Password).Equals(password))
+                                if (item.Password.Equals(password))
+                                {
                                 user._Id = item._Id;
+                                user.Username = item.Username;
                                 user.Password = item.Password;
                                 user.Points = item.Points;
                                 user.Email = item.Email;
@@ -157,7 +160,6 @@ namespace Thesis
             {
                 Debug.WriteLine(@"\tERROR {0}", ex.Message);
             }
-
             return user;
         }
 
@@ -172,8 +174,8 @@ namespace Thesis
             if (UserExists.Equals(false))
             {
                 user.Username = username;
-                user.Password = User.EncryptPassword(password);
-                //user.Password = User.Password;
+                //user.Password = User.EncryptPassword(password);
+                user.Password = User.Password;
                 user.Email = email;
                 user.Mobile = mobile;
                 user.Body_data = new BodyData(gender, weight, height);

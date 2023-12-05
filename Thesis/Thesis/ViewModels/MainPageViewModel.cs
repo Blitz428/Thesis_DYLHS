@@ -12,22 +12,27 @@ namespace Thesis.ViewModels
     public class MainPageViewModel : INotifyPropertyChanged
     {
         IRestService _restService;
-        User user = null;
+        User user;
         public User User
         {
             get { return user; }
             set
             {
-                if (_restService.User !=null)
-                {
+                
                     user = _restService.User;
-                }
+                    NotifyPropertyChanged();
+                
             } }
 
         int level;
         public int Level { get { return level; } set {
                 if (user.Points!=double.NaN)
                 {
+                    if (user.Points==0)
+                    {
+                        level = 0;
+
+                    }
                     if (user.Points < 100)
                     { level = 1; }
                     else if (100 < user.Points && user.Points < 200)
@@ -43,9 +48,12 @@ namespace Thesis.ViewModels
             }
         }
                 
+        public void SetUser()
+        {
+            User=_restService.User;
+        }        
                 
-                
-                  
+        
 
         public MainPageViewModel(IRestService restService)
         {
