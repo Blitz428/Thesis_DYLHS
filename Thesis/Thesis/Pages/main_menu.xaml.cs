@@ -15,7 +15,11 @@ namespace Thesis.Pages
         public main_menu()
         {
             Children.Add(new dashboard());
-            
+            Children.Add(new profile());
+            Children.Add(new created_favourites_page());
+            Children.Add(new friends());
+            Children.Add(new toplist());
+            Children.Add(new logout());
             InitializeComponent();
         }
     }

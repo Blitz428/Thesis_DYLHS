@@ -9,6 +9,7 @@ namespace Thesis
         public static LoginScreenViewModel LSViewModel { get; private set; }
         public static RegistrationViewModel RSViewModel { get; private set; }
         public static MainPageViewModel MPViewModel { get; private set; }
+        public static ProfileViewModel PVViewModel { get; private set; }
 
         public App()
         {
@@ -16,6 +17,7 @@ namespace Thesis
             LSViewModel = new LoginScreenViewModel(restService);
             RSViewModel = new RegistrationViewModel(restService);
             MPViewModel = new MainPageViewModel(restService);
+            PVViewModel = new ProfileViewModel(restService);
             MainPage = new NavigationPage(new Thesis.MainPage());
         }
 

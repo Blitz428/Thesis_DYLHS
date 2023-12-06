@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Thesis.Pages.profile"
+             xmlns:converter="clr-namespace:Thesis.Converters"
+             Title="Profil">
+    <ContentPage.Resources>
+        <converter:AnyNullValueCheckConverter x:Key="AnyNullValueCheckConverter" />
+        <converter:ButtonColorConverter x:Key="ButtonColorConverter"/>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <Label Grid.Row="0" BackgroundColor="LightGray" Padding="20" Margin="5,5,5,5" Text="Picture"></Label>
+            <Label Grid.Row="1"  Text="Felhasználónév:" Padding="10"></Label>
+            <Entry Grid.Row="1" Text="{Binding User.Username}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" IsEnabled="{Binding Editable}"></Entry>
+            <Label Grid.Row="2" Text="Jelszó:" Padding="10"></Label>
+            <Entry Grid.Row="2" Text="{Binding User.Password}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" IsEnabled="{Binding Editable}"></Entry>
+            <Label Grid.Row="3" Text="Magasság:" Padding="10"></Label>
+            <Entry Grid.Row="3" Text="{Binding User.Body_data.Height}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Keyboard="Numeric" IsEnabled="{Binding Editable}"></Entry>
+            <Label Grid.Row="4" Text="Súly" Padding="10"></Label>
+            <Entry Grid.Row="4" Text="{Binding User.Body_data.Weight}" HorizontalTextAlignment="Center" VerticalTextAlignment="Center" Keyboard="Numeric" IsEnabled="{Binding Editable}"></Entry>
+            <Label Grid.Row="5" Text="Születésnap" Padding="10" ></Label>
+            <DatePicker Grid.Row="5" HorizontalOptions="CenterAndExpand" Date="{Binding User.Birthday}" IsEnabled="{Binding Editable}"></DatePicker>
+            <Label Grid.Row="6" Text="Nem:" Padding="10"></Label>
+            <Grid Grid.Row="7"  VerticalOptions="Center" HorizontalOptions="Center">
+                <Label Text="Férfi" VerticalOptions="Center" HorizontalOptions="Center" ></Label>
+                <Switch  Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" OnColor="HotPink" ThumbColor="Blue" IsToggled="{Binding User.Body_data.Gender}" IsEnabled="{Binding Editable}" />
+                <Label Text="Nő" Grid.Column="2" VerticalOptions="Center" HorizontalOptions="Center" ></Label>
+            </Grid>
+            <Grid Grid.Row="8">
+                <Button x:Name="Edit" Padding="5" Text="Módosítás" Clicked="Edit_Clicked" >
+
+                </Button>
+                <Button x:Name="Save" Grid.Column="1" Padding="5" Text="Mentés" Clicked="Save_Clicked">
+                    <Button.IsEnabled >
+                        <MultiBinding Converter="{StaticResource AnyNullValueCheckConverter}">
+                            <Binding Path="User.Username" />
+                            <Binding Path="User.Password" />
+                            <Binding Path="User.Body_data.Height" />
+                            <Binding Path="User.Body_data.Weight" />
+                            <Binding Path="User.Birthday" />
+                            <Binding Path="Editable"/>
+                        </MultiBinding>
+                    </Button.IsEnabled>
+                    <Button.BackgroundColor>
+                        <MultiBinding Converter="{StaticResource ButtonColorConverter}">
+                            <Binding Path="User.Username" />
+                            <Binding Path="User.Password" />
+                            <Binding Path="User.Body_data.Height" />
+                            <Binding Path="User.Body_data.Weight" />
+                            <Binding Path="User.Birthday" />
+                        </MultiBinding>
+                    </Button.BackgroundColor>
+                </Button>
+                
+            </Grid>
+            <Button Grid.Row="9" Padding="10" BackgroundColor="IndianRed" Text="Fiók törlése">
+
+            </Button>
+        </Grid>
+        
+    </ContentPage.Content>
+</ContentPage>

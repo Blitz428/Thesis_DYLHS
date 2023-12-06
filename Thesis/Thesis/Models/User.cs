@@ -21,13 +21,13 @@ namespace Thesis.Models
         private string username;
 
         [BsonElement("username")]
-        public string Username { get => username; set { username = value; NotifyPropertyChanged(); } }
+        public string Username { get => username; set { username = value; } }
 
         [BsonIgnore]
         private string password;
 
         [BsonElement("password")]
-        public string Password { get => password; set { password = value; NotifyPropertyChanged(); } }
+        public string Password { get => password; set { password = value; } }
 
         [BsonElement("mobile")]
         public double Mobile { get; set; }

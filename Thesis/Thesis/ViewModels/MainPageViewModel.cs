@@ -47,13 +47,13 @@ namespace Thesis.ViewModels
                 }
             }
         }
-                
+
         public void SetUser()
         {
-            User=_restService.User;
-        }        
-                
-        
+            User = _restService.User;
+        }
+
+
 
         public MainPageViewModel(IRestService restService)
         {
