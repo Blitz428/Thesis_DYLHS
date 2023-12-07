@@ -34,5 +34,19 @@ namespace Thesis.Models
         [BsonElement("points")]
         public double Points { get; set; }
 
+        [BsonElement("own_drinks")]
+        public ICollection<string> Own_drinks{ get; set; }
+
+        [BsonElement("own_ingredients")]
+        public ICollection<string> Own_ingredients { get; set; }
+
+        [BsonElement("fav_drinks")]
+        public ICollection<string> Fav_drinks { get; set; }
+
+        [BsonElement("fav_ingredients")]
+        public ICollection<string> Fav_ingredients { get; set; }
+
+        [BsonElement("friends")]
+        public ICollection<string> Friends { get; set; }
     }
 }

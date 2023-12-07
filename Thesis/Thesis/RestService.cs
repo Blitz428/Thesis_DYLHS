@@ -143,6 +143,11 @@ namespace Thesis
                                 user.Role = item.Role;
                                 user.Body_data = item.Body_data;
                                 user.Birthday = item.Birthday;
+                                user.Own_drinks = item.Own_drinks;
+                                user.Own_ingredients = item.Own_ingredients;
+                                user.Fav_drinks = item.Fav_ingredients;
+                                user.Fav_ingredients = item.Fav_ingredients;
+                                user.Friends = item.Friends;
                             }
                             else
                             {
@@ -176,17 +181,21 @@ namespace Thesis
             BodyData bodyData;
 
 
-
             if (UserExists.Equals(false))
             {
                 user.Username = username;
                 //user.Password = User.EncryptPassword(password);
-                user.Password = User.Password;
+                user.Password = password;
                 user.Email = email;
                 user.Mobile = mobile;
                 user.Body_data = new BodyData(gender, weight, height);
                 user.Birthday = birthday;
                 user.Role = "user";
+                user.Own_drinks = new List<string>();
+                user.Fav_drinks = new List<string>();
+                user.Own_ingredients = new List<string>();
+                user.Fav_ingredients = new List<string>();
+                user.Friends = new List<string>();
 
             }
 

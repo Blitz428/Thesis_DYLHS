@@ -50,6 +50,5 @@ namespace Thesis.Models
 
         public ICollection<string> Ratings { get; set; }
 
-
     }
 }

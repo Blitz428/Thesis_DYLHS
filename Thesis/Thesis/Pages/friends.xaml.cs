@@ -14,7 +14,18 @@ namespace Thesis.Pages
     {
         public friends()
         {
+            BindingContext = App.FrViewModel;
             InitializeComponent();
+        }
+
+        async void Reload_Clicked(object sender, EventArgs e)
+        {
+            await App.FrViewModel.GetFriends();
+        }
+
+        async void SearchButtonPressed(object sender, EventArgs e)
+        {
+            await App.FrViewModel.GetSearchResult();
         }
     }
 }

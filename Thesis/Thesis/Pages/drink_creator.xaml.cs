@@ -14,7 +14,14 @@ namespace Thesis.Pages
     {
         public drink_creator()
         {
+            BindingContext = App.DCViewModel;
             InitializeComponent();
+        }
+
+        async void Add_Clicked(object sender, EventArgs e)
+        {
+            await App.DCViewModel.CreateDrinkAsync();
+            await Navigation.PopAsync();
         }
     }
 }

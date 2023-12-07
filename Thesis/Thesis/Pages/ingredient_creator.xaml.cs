@@ -14,7 +14,14 @@ namespace Thesis.Pages
     {
         public ingredient_creator()
         {
+            BindingContext = App.ICViewModel;
             InitializeComponent();
+        }
+
+        async void Add_Clicked(object sender, EventArgs e)
+        {
+            await App.ICViewModel.CreateIngredientAsync();
+            await Navigation.PopAsync();
         }
     }
 }

@@ -20,6 +20,7 @@ namespace Thesis.Pages
             Children.Add(new friends());
             Children.Add(new toplist());
             Children.Add(new logout());
+            NavigationPage.SetHasBackButton(this, false);
             InitializeComponent();
         }
     }

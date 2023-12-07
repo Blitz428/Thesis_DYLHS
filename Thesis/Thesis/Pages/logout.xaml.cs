@@ -16,5 +16,10 @@ namespace Thesis.Pages
         {
             InitializeComponent();
         }
+
+        async void Logout_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new MainPage());
+        }
     }
 }

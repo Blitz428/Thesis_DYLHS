@@ -1,12 +1,29 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Thesis.Pages.friends">
+             x:Class="Thesis.Pages.friends"
+             Title="Barátok">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <SearchBar  Placeholder="Barát hozzáadása..." SearchButtonPressed="SearchButtonPressed" Text="{Binding SearchInput}"></SearchBar>
+            <Label Text="Keresési eredmények:" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
+            <ListView ItemsSource="{Binding SearchResults}" HeightRequest="100">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Username}">
+                        </TextCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button x:Name="Reload" Text="Frissít" Clicked="Reload_Clicked" ></Button>
+            <ListView ItemsSource="{Binding Friends}" HeightRequest="100" >
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Username}">
+                        </TextCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -4,10 +4,44 @@
              x:Class="Thesis.Pages.created_favourites_page"
              Title="Saját, kedvencek">
     <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
-        </StackLayout>
+        <ScrollView>
+            <StackLayout>
+                <Grid>
+                    <Button x:Name="newDrink" Text="Új ital..." Clicked="newDrink_Clicked"></Button>
+                    <Button x:Name="newIngredient" Grid.Column="1"  Text="Új hozzávaló..." Clicked="newIngredient_Clicked"></Button>
+                    <Button x:Name="refresh" Grid.Column="2"  Text="Frissít" Clicked="refresh_Clicked"></Button>
+                </Grid>
+                <Label Grid.Row="1" Text="Saját italok:" Margin="10,5,0,0" FontAttributes="Bold" FontSize="Title"></Label>
+                <ListView ItemsSource="{Binding OwnDrinks}" HeightRequest="100" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Drink_name}" Detail="{Binding Description}">
+                            </TextCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Label Grid.Row="3" Text="Saját hozzávalók:" Margin="10,5,0,0" FontAttributes="Bold" FontSize="Title"></Label>
+                <ListView ItemsSource="{Binding OwnIngredients}" HeightRequest="100" >
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Name}" Detail="{Binding Description}">
+                            </TextCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Label Text="Kedvenc italok:" Margin="10,5,0,0" FontAttributes="Bold" FontSize="Title"></Label>
+                <ScrollView HeightRequest="150">
+
+
+                </ScrollView>
+                <Label Text="Kedvenc hozzávalók:" Margin="10,5,0,0" FontAttributes="Bold" FontSize="Title"></Label>
+                <ScrollView HeightRequest="150">
+
+
+                </ScrollView>
+            </StackLayout>
+
+        </ScrollView>
+
     </ContentPage.Content>
 </ContentPage>

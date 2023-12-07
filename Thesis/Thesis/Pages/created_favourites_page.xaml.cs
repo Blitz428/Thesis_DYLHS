@@ -14,7 +14,25 @@ namespace Thesis.Pages
     {
         public created_favourites_page()
         {
+            BindingContext = App.OFViewModel;
+            
             InitializeComponent();
+        }
+
+         async void newDrink_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new drink_creator());
+        }
+
+        async void newIngredient_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushAsync(new ingredient_creator());
+        }
+
+        async void refresh_Clicked(object sender, EventArgs e)
+        {
+            await App.OFViewModel.GetOwnDrinks();
+            await App.OFViewModel.GetOwnIngredients();
         }
     }
 }

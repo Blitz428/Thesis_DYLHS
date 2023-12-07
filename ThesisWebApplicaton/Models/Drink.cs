@@ -43,10 +43,10 @@ namespace Thesis.Models
         [BsonElement("verified")]
         public bool Verified { get; set; }
 
-
+        [BsonElement("ingredients")]
         public ICollection<string> Ingredients { get; set; }
 
-
+        [BsonElement("ratings")]
         public ICollection<string> Ratings { get; set; }
 
 

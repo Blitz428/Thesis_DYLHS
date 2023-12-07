@@ -16,7 +16,8 @@ namespace Thesis.Pages
 		{
 			BindingContext = App.MPViewModel;
 			App.MPViewModel.SetUser();
-			InitializeComponent ();
+
+            InitializeComponent ();
 		}
 	}
 }
