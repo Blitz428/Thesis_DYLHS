@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+using Thesis.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -17,15 +13,27 @@ namespace Thesis.Pages
             BindingContext = App.FrViewModel;
             InitializeComponent();
         }
-
-        async void Reload_Clicked(object sender, EventArgs e)
+        protected override void OnAppearing()
         {
-            await App.FrViewModel.GetFriends();
+            base.OnAppearing();
+            App.FrViewModel.GetFriends();
+            App.MPViewModel.SetUser();
         }
+
 
         async void SearchButtonPressed(object sender, EventArgs e)
         {
             await App.FrViewModel.GetSearchResult();
+        }
+
+        async void ListView_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            await App.FrViewModel.AddFriend((User)sender);
+        }
+
+        private async void Button_Clicked(object sender, EventArgs e)
+        {
+
         }
     }
 }

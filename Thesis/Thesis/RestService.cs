@@ -1,7 +1,6 @@
-﻿using Amazon.Runtime.Credentials.Internal;
-using Amazon.Runtime.Internal.Transform;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Text;
@@ -18,7 +17,7 @@ namespace Thesis
         JsonSerializerOptions serializerOptions;
 
         User user;
-        
+
 
         public User User { get { return user; } set { User = value; } }
 
@@ -33,9 +32,9 @@ namespace Thesis
             };
         }
 
-        public async Task<List<T>> RefreshDataAsync<T>(string url)
+        public async Task<ObservableCollection<T>> RefreshDataAsync<T>(string url)
         {
-            List<T> Items = new List<T>();
+            ObservableCollection<T> Items = new ObservableCollection<T>();
 
             Uri uri = new Uri(string.Format(url, string.Empty));
             try
@@ -44,7 +43,7 @@ namespace Thesis
                 if (response.IsSuccessStatusCode)
                 {
                     string content = await response.Content.ReadAsStringAsync();
-                    Items = JsonSerializer.Deserialize<List<T>>(content, serializerOptions);
+                    Items = JsonSerializer.Deserialize<ObservableCollection<T>>(content, serializerOptions);
                 }
             }
             catch (Exception ex)
@@ -57,12 +56,12 @@ namespace Thesis
 
         public async Task SaveItemAsync<T>(string url, T item, bool isNewItem = false)
         {
-    
-         
-               Uri uri = new Uri(string.Format(url, string.Empty));
-            
-            
-            
+
+
+            Uri uri = new Uri(string.Format(url, string.Empty));
+
+
+
 
             try
             {
@@ -76,7 +75,7 @@ namespace Thesis
                 }
                 else
                 {
-      
+
                     response = await client.PutAsync(uri, content);
                 }
 
@@ -115,7 +114,7 @@ namespace Thesis
         public async Task<User> FindUserAsync(string url, string username, string password)
         {
             List<User> Items = new List<User>();
-            user = new User() ;
+            user = new User();
             CredentialChecker = new bool[3] { false, false, false };
 
             Uri uri = new Uri(string.Format(url, "Users"));
@@ -132,8 +131,8 @@ namespace Thesis
                         if (item.Username.Equals(username))
                         {
                             //if (User.DecryptPassword(item.Password).Equals(password))
-                                if (item.Password.Equals(password))
-                                {
+                            if (item.Password.Equals(password))
+                            {
                                 user._Id = item._Id;
                                 user.Username = item.Username;
                                 user.Password = item.Password;
@@ -158,12 +157,12 @@ namespace Thesis
 
                     }
                     string test = user.Username;
-                    
-                    if (test==null)
+
+                    if (test == null)
                     {
-                         { CredentialChecker[1] = true; }
+                        { CredentialChecker[1] = true; }
                     }
-                    
+
                 }
 
             }

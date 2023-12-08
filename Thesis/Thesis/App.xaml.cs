@@ -13,8 +13,10 @@ namespace Thesis
         public static DrinkCreatorViewModel DCViewModel { get; private set; }
         public static IngredientCreatorViewModel ICViewModel { get; private set; }
         public static OwnAndFavouritesViewModel OFViewModel { get; private set; }
-        public static FriendsViewModel FrViewModel {  get; private set; }
-
+        public static FriendsViewModel FrViewModel { get; private set; }
+        public static ToplistViewModel TlViewModel { get; private set; }
+        public static ItemDetailsViewModel IDViewModel { get; private set; }
+        public static IngredientToAddViewModel ITAViewModel { get; private set; }
 
         public App()
         {
@@ -27,7 +29,10 @@ namespace Thesis
             ICViewModel = new IngredientCreatorViewModel(restService);
             OFViewModel = new OwnAndFavouritesViewModel(restService);
             FrViewModel = new FriendsViewModel(restService);
-            
+            TlViewModel = new ToplistViewModel(restService);
+            IDViewModel = new ItemDetailsViewModel(restService, MPViewModel, OFViewModel);
+            ITAViewModel = new IngredientToAddViewModel(restService,DCViewModel);
+
             MainPage = new NavigationPage(new Thesis.MainPage());
         }
 

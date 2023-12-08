@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
 using Thesis.Models;
 
@@ -33,22 +30,27 @@ namespace Thesis.ViewModels
         }
         public void SetEditable()
         {
-            if (Editable==false)
+            if (Editable == false)
             {
                 Editable = true;
             }
             else
             {
-                Editable=false;
+                Editable = false;
             }
-            
+
         }
         string url = "http://10.0.2.2:5096/api/Users/";
         public Task EditUserAsync()
         {
             url += User._Id;
-            return _restService.SaveItemAsync<User>(url, User,false);
+            return _restService.SaveItemAsync<User>(url, User, false);
 
+        }
+        public async Task DeleteUser()
+        {
+            url += User._Id;
+            await _restService.DeleteItemAsync(url, User._Id);
         }
 
         public ProfileViewModel(IRestService restService)

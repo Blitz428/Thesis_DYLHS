@@ -14,61 +14,55 @@ namespace Thesis.ViewModels
         User userToRegister;
         public User UserToRegister { get { return userToRegister; } }
 
-        private string username = string.Empty;
+        private string username;
         public string Username
         {
             get { return username; }
             set
             {
-                if (value != null)
-                {
-                    username = value;
-                    NotifyPropertyChanged();
-                }
+
+                username = value;
+                NotifyPropertyChanged();
+
 
             }
         }
 
-        private string password = string.Empty;
+        private string password;
         public string Password
         {
             get { return password; }
             set
             {
-                if (value != null)
-                {
-                    password = value;
-                    NotifyPropertyChanged();
-                }
+
+                password = value;
+                NotifyPropertyChanged();
+
 
             }
         }
-        private string email = string.Empty;
+        private string email;
         public string Email
         {
             get { return email; }
             set
             {
-                if (value != null)
-                {
-                    email = value;
-                    NotifyPropertyChanged();
-                }
+
+                email = value;
+                NotifyPropertyChanged();
+
 
             }
         }
 
-        private string role = string.Empty;
+        private string role;
         public string Role
         {
             get { return role; }
             set
             {
-                if (value != null)
-                {
-                    role = value;
-                    NotifyPropertyChanged();
-                }
+                role = value;
+                NotifyPropertyChanged();
 
             }
         }
@@ -79,26 +73,24 @@ namespace Thesis.ViewModels
             get { return mobile; }
             set
             {
-                if (value != null)
-                {
-                    mobile = value;
-                    NotifyPropertyChanged();
-                }
+
+                mobile = value;
+                NotifyPropertyChanged();
+
 
             }
         }
 
-        private double points = double.NaN;
+        private double points;
         public double Points
         {
             get { return points; }
             set
             {
-                if (value != double.NaN)
-                {
-                    points = value;
-                    NotifyPropertyChanged();
-                }
+
+                points = value;
+                NotifyPropertyChanged();
+
 
             }
         }
@@ -117,49 +109,46 @@ namespace Thesis.ViewModels
             }
         }
 
-        private double weight = double.NaN;
+        private double weight;
         public double Weight
         {
             get { return weight; }
             set
             {
-                if (value != double.NaN)
-                {
-                    weight = value;
-                    NotifyPropertyChanged();
-                }
+
+                weight = value;
+                NotifyPropertyChanged();
+
 
             }
         }
 
-        private double height = double.NaN;
+        private double height;
         public double Height
         {
             get { return height; }
             set
             {
-                if (value != double.NaN)
-                {
-                    height = value;
-                    NotifyPropertyChanged();
-                }
+
+                height = value;
+                NotifyPropertyChanged();
+
 
             }
         }
 
 
-        private DateTime birthday = DateTime.Today;
+        private DateTime birthday;
 
         public DateTime Birthday
         {
             get { return birthday; }
             set
             {
-                if (value != DateTime.Today)
-                {
-                    birthday = value;
-                    NotifyPropertyChanged();
-                }
+
+                birthday = value;
+                NotifyPropertyChanged();
+
             }
 
         }

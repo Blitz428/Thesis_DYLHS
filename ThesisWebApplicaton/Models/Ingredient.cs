@@ -40,5 +40,8 @@ namespace Thesis.Models
         [BsonElement("verified")]
         public bool Verified { get; set; }
 
+        [BsonElement("avg_rating")]
+        public double Avg_rating { get; set; }
+
     }
 }

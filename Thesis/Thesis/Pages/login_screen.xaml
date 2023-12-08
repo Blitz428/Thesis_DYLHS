@@ -26,7 +26,7 @@
             </Grid.ColumnDefinitions>
             <Entry  Grid.Column="1" Grid.Row="1" VerticalOptions="Start" Text="{Binding Username}" HorizontalOptions="Fill"/>
             <Label Grid.Column="1" Grid.Row="0"  HorizontalTextAlignment="Start" VerticalTextAlignment="End" >Felhasználónév:</Label>
-            <Entry  Grid.Column="1" Grid.Row="3" VerticalOptions="Start"   Text="{Binding Password}" />
+            <Entry  Grid.Column="1" Grid.Row="3" VerticalOptions="Start"   Text="{Binding Password}" IsPassword="True"/>
             <Label Grid.Column="1" Grid.Row="2" HorizontalTextAlignment="Start" VerticalTextAlignment="End">Jelszó:</Label>
             <Button Grid.Column="1" Grid.Row="4" Margin="10,10,10,10" Text="Elfelejtett jelszó" Clicked="Forgot_password" BackgroundColor="#00000000" TextColor="DarkRed"/>
             <Button Grid.Column="1" Grid.Row="5" Clicked="Login_" Text="Bejelentkezés">

@@ -11,7 +11,6 @@
                     <Label  Margin="140,10,0,0" Text="{Binding User.Username}" HorizontalTextAlignment="Start" VerticalTextAlignment="Start" FontSize="Title" FontAttributes="Bold"></Label>
                     
                 </Grid>
-
                 <Grid>
                     <Label Grid.Column="0" Margin="10,10,0,0"  Text="Jelenlegi szinted:" FontSize="Medium"/>
                     <Label Grid.Column="1" FontSize="Medium" Margin="0,10,0,0" TextColor="DodgerBlue" Text="{Binding Level}"/>
@@ -21,48 +20,58 @@
                     <Label Grid.Column="1" FontSize="Small" Margin="0,0,0,0" TextColor="DodgerBlue" Text="{Binding User.Points}"/>
                 </Grid>
                 <Grid>
-                    <Button Text="Este Zárása"></Button>
-                    <Button Text="Este kezdése"></Button>
-                </Grid>
-                <Grid>
                     <Label Grid.Column="0" Margin="10,10,0,0"  Text="Jelenlegi alkoholszinted:" FontSize="Medium"/>
-                    <Label Grid.Column="1" Margin="10,10,0,0" FontSize="Medium" Text="0.225%" VerticalOptions="Center"></Label>
+                    <Label Grid.Column="1" Margin="10,10,0,0" FontSize="Medium" Text="{Binding BACdisplay}" VerticalOptions="Center"></Label>
                 </Grid>
-                
-                <ProgressBar Scale="5" Visual="Material" FlowDirection="LeftToRight" Progress="0.45"  ProgressColor="DarkSeaGreen"></ProgressBar>
+
+                <ProgressBar Scale="5" Visual="Material" FlowDirection="LeftToRight" Progress="{Binding Progressbarvalue}"  ProgressColor="DarkSeaGreen"></ProgressBar>
                 <Grid>
-                    <Label Grid.Column="0" Margin="10,10,0,0"  Text="Mérsékelt ittasság" HorizontalTextAlignment="Center" FontSize="Medium" TextColor="Orange" VerticalOptions="Center"/>
-                    <Button Grid.Column="1" Text="Info" Margin="100,10,0,0" ></Button>
+                    <Label x:Name="State" Grid.Column="0" Margin="10,10,0,0"  HorizontalTextAlignment="Center" FontSize="Medium" VerticalOptions="Center" FontAttributes="Bold"/>
+                    <Button x:Name="Info" Grid.Column="1" Text="Info" Margin="100,10,0,0" Clicked="Info_Clicked" ></Button>
                 </Grid>
-                <SearchBar Placeholder="Ital vagy hozzávaló rögzítése..."></SearchBar>
-                <ScrollView BackgroundColor="LightGray" HeightRequest="250" Margin="15,15,15,15" >
-                    <ScrollView.Content>
-                        <ContentPresenter>
-                            
-                        </ContentPresenter>
-                    </ScrollView.Content>
-                    
-                </ScrollView>
+                <Grid>
+                    <Label Text="Józanodásig becsült idő:" Margin="10,10,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
+                    <Label x:Name="TimeLabel" Grid.Column="1" Margin="10,10,0,0"  FontSize="Medium" ></Label>
+                </Grid>
+                <SearchBar Placeholder="Ital vagy hozzávaló rögzítése..." SearchButtonPressed="SearchBar_SearchButtonPressed" Text="{Binding SearchInput}"></SearchBar>
+                <ListView HeightRequest="100" BackgroundColor="LightBlue" Margin="15,0,15,0" ItemsSource="{Binding SearchResults}" SelectedItem="{Binding SelectedItem}" ItemTapped="ListView_ItemTapped">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Name}" Detail="{Binding Description}"></TextCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <Label Text="Elfogyasztott italok:" Margin="10,10,0,0" FontSize="Medium" FontAttributes="Bold" ></Label>
+                <ListView  BackgroundColor="LightBlue" HeightRequest="100" Margin="15,0,15,0" ItemsSource="{Binding Consumed}" SelectedItem="{Binding SelectedItem}" ItemTapped="ListView_ItemTapped">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Name}" Detail="{Binding Description}"></TextCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
                 <Label Text="Összesen fogyasztott:" Margin="10,10,0,0" FontSize="Medium" FontAttributes="Bold"></Label>
                 <Grid>
                     <Label Text="Alkohol (V/V%) : " FontSize="Medium" Margin="10,0,0,0" ></Label>
-                    <Label Grid.Column="1" FontSize="Medium" Margin="10,0,0,0" Text="15%"></Label>
+                    <Label Grid.Column="1" FontSize="Medium" Margin="10,0,0,0" Text="{Binding Alcohol}"></Label>
                 </Grid>
                 <Grid>
                     <Label Text="Kalória (kcal) : " FontSize="Medium" Margin="10,0,0,0" ></Label>
-                    <Label Grid.Column="1" FontSize="Medium" Margin="10,0,0,0" Text="17"></Label>
+                    <Label Grid.Column="1" FontSize="Medium" Margin="10,0,0,0" Text="{Binding Kcal}"></Label>
                 </Grid>
                 <Grid>
                     <Label Text="Szénidrát (g) : " FontSize="Medium" Margin="10,0,0,0" ></Label>
-                    <Label Grid.Column="1" FontSize="Medium" Margin="10,0,0,0" Text="43"></Label>
+                    <Label Grid.Column="1" FontSize="Medium" Margin="10,0,0,0" Text="{Binding Carbon}"></Label>
                 </Grid>
                 <Grid>
                     <Label Text="Zsír (g) : " FontSize="Medium" Margin="10,0,0,0" ></Label>
-                    <Label Grid.Column="1" FontSize="Medium" Margin="10,0,0,0" Text="17"></Label>
+                    <Label Grid.Column="1" FontSize="Medium" Margin="10,0,0,0" Text="{Binding Fat}"></Label>
                 </Grid>
                 <Grid>
                     <Label Text="Fehérje (g) : " FontSize="Medium" Margin="10,0,0,0" ></Label>
-                    <Label Grid.Column="1" FontSize="Medium" Margin="10,0,0,0" Text="0"></Label>
+                    <Label Grid.Column="1" FontSize="Medium" Margin="10,0,0,0" Text="{Binding Protein}"></Label>
+                </Grid>
+                <Grid>
+                    <Button x:Name="Reset" Text="Este újraindítása" Clicked="Reset_Clicked" ></Button>
                 </Grid>
             </StackLayout>
 

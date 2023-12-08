@@ -9,7 +9,7 @@ namespace Thesis.Models
         [BsonRepresentation(BsonType.ObjectId)]
         public string? _Id { get; set; }
 
-        [BsonRepresentation(BsonType.ObjectId)]
+       
         [BsonElement("created_by")]
         public string Created_by { get; set; }
 

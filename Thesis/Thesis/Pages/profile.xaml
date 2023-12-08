@@ -58,7 +58,7 @@
                 </Button>
                 
             </Grid>
-            <Button Grid.Row="10" Padding="10" BackgroundColor="IndianRed" Text="Fiók törlése">
+            <Button x:Name="Delete" Grid.Row="10" Padding="10" BackgroundColor="IndianRed" Text="Fiók törlése" Clicked="Delete_Clicked">
 
             </Button>
         </Grid>

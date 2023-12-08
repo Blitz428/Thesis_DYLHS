@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
 using Thesis.Models;
 
@@ -14,29 +12,28 @@ namespace Thesis.ViewModels
 
         public FriendsViewModel(IRestService service)
         {
-                restService = service;
+            restService = service;
         }
 
-        List<User> friends;
-        public List<User> Friends { get { return friends; } set { friends = value; NotifyPropertyChanged(); } }
+        ObservableCollection<User> friends = new ObservableCollection<User>();
+        public ObservableCollection<User> Friends { get { return friends; } set { friends = value; NotifyPropertyChanged(); } }
 
-        List<User> users;
-        public List<User> Users { get {  return users; } set { users = value; NotifyPropertyChanged(); } }
+        ObservableCollection<User> users = new ObservableCollection<User>();
+        public ObservableCollection<User> Users { get { return users; } set { users = value; NotifyPropertyChanged(); } }
 
-        User user;
-        public User User { get { return user; } set {  user = value; NotifyPropertyChanged(); } }
+        User user = new User();
+        public User User { get { return user; } set { user = value; NotifyPropertyChanged(); } }
 
-        List<User> searchResults;
-        public List<User> SearchResults { get {  return searchResults; } set {  searchResults = value; NotifyPropertyChanged(); } }
+        ObservableCollection<User> searchResults = new ObservableCollection<User>();
+        public ObservableCollection<User> SearchResults { get { return searchResults; } set { searchResults = value; NotifyPropertyChanged(); } }
 
         string searchInput;
-        public string SearchInput { get {  return searchInput; } set { searchInput = value; NotifyPropertyChanged(); } }    
+        public string SearchInput { get { return searchInput; } set { searchInput = value; NotifyPropertyChanged(); } }
 
-        public async Task<List<User>>GetFriends()
+        public async Task<ObservableCollection<User>> GetFriends()
         {
-            Users = new List<User>();
-            Friends = new List<User>();
-            Users= await restService.RefreshDataAsync<User>("http://10.0.2.2:5096/api/Users");
+            User = restService.User;
+            Users = await restService.RefreshDataAsync<User>("http://10.0.2.2:5096/api/Users");
 
             foreach (string id in User.Friends)
             {
@@ -44,25 +41,30 @@ namespace Thesis.ViewModels
                 {
                     if (user._Id.Equals(id))
                     {
-                        Friends.Add(user);
+                        if (!Friends.Contains(user))
+                        {
+                            Friends.Add(user);
+                        }
+
                     }
                 }
             }
             return Friends;
         }
 
-
-        public async Task<List<User>> GetSearchResult()
+        public async Task<ObservableCollection<User>> GetSearchResult()
         {
-            Users = new List<User>();
-            SearchResults = new List<User>();
-            
+
             Users = await restService.RefreshDataAsync<User>("http://10.0.2.2:5096/api/Users");
             foreach (User user in Users)
             {
                 if (user.Username.Contains(SearchInput))
                 {
-                    SearchResults.Add(user);
+                    if (!SearchResults.Contains(user))
+                    {
+                        SearchResults.Add(user);
+                    }
+
                 }
             }
             return SearchResults;

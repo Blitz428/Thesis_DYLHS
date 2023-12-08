@@ -1,10 +1,11 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace Thesis.Models
 {
-    public class Drink
+    public class Drink : IItem
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -15,8 +16,8 @@ namespace Thesis.Models
         public string Created_by { get; set; }
 
 
-        [BsonElement("drink_name")]
-        public string Drink_name { get; set; }
+        [BsonElement("name")]
+        public string Name { get; set; }
 
         [BsonElement("description")]
         public string Description { get; set; }
@@ -45,10 +46,10 @@ namespace Thesis.Models
         public bool Verified { get; set; }
 
 
-        public ICollection<string> Ingredients { get; set; }
+        public ObservableCollection<string> Ingredients { get; set; }
 
 
-        public ICollection<string> Ratings { get; set; }
+        public ObservableCollection<string> Ratings { get; set; }
 
     }
 }

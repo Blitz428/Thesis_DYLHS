@@ -41,7 +41,8 @@ namespace Thesis.Windows
 
         async void Forgot_password(object sender, EventArgs e)
         {
-            await Navigation.PushAsync(new forgot_pass());
+            await App.LSViewModel.ResetPassword();
+            await DisplayAlert("Ideiglenes jelszó", "Ideiglenes jelszód: 12345. Kérlek változtasd meg belépés után!", "OK");
         }
     }
 }

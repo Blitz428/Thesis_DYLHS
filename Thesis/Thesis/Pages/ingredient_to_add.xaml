@@ -1,35 +1,34 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Thesis.Pages.ingredient_creator"
-             Title="Hozzávaló készítés">
+             x:Class="Thesis.Pages.ingredient_to_add">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
                 <Label Text="Hozzávaló neve:" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
-                <Entry Text="{Binding Name}"></Entry>
+                <Label Text="{Binding IngredientToAdd.Name}"></Label>
                 <Label Text="Hozzávaló magyarázata:" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
-                <Entry HeightRequest="50" Text="{Binding Description}"></Entry>
+                <Label HeightRequest="50" Text="{Binding IngredientToAdd.Description}"></Label>
                 <Label Text="Kategória:" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
-                <Entry Text="{Binding Type}"></Entry>
-                <Label Text="Mennyiség:" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
+                <Label Text="{Binding IngredientToAdd.Type}"></Label>
+                
                 <Label Text="Tápértékek 100g/ml mennyiségre:" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
                 <Grid>
                     <Label Text="Alkohol (V/V%):" Margin="30,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
-                        <Entry Margin="30,30,30,0" Keyboard="Numeric" Text="{Binding Alcohol}"></Entry>
+                    <Label Margin="30,30,30,0" Text="{Binding IngredientToAdd.Alcohol}"></Label>
                     <Label Grid.Row="1" Text="Kcal:" Margin="30,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
-                        <Entry Grid.Row="1" Margin="30,30,30,0" Keyboard="Numeric" Text="{Binding Kcal}"></Entry>
+                    <Label Grid.Row="1" Margin="30,30,30,0"  Text="{Binding IngredientToAdd.Kcal}"></Label>
                 </Grid>
                 <Grid>
                     <Label Text="Szénhidrát:" Margin="30,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
-                        <Entry Margin="30,30,10,0" Keyboard="Numeric" Text="{Binding Carbon}"></Entry>
+                    <Label Margin="30,30,10,0" Text="{Binding IngredientToAdd.Carbon}"></Label>
                     <Label Grid.Column="1" Text="Zsír:" Margin="15,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
-                        <Entry Grid.Column="1" Margin="10,10,10,0" Keyboard="Numeric" Text="{Binding Fat}"></Entry>
+                    <Label Grid.Column="1" Margin="10,10,10,0"  Text="{Binding IngredientToAdd.Fat}"></Label>
                     <Label Grid.Column="2" Text="Fehérje:" Margin="15,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
-                        <Entry Grid.Column="2" Margin="10,10,10,0" Keyboard="Numeric" Text="{Binding Protein}"></Entry>
+                    <Label Grid.Column="2" Margin="10,10,10,0"  Text="{Binding IngredientToAdd.Protein}"></Label>
                 </Grid>
                 <Label Text="Mennyiség (g/ml):" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
-                <Entry Text="{Binding Quantity}" Margin="10,10,0,0"></Entry>
+                <Entry Text="{Binding Quantity}" Keyboard="Numeric" Margin="10,10,0,0"></Entry>
                 <Button x:Name="Add" Text="Hozzávaló hozzáadása" Margin="10,10,10,10" Clicked="Add_Clicked"></Button>
             </StackLayout>
         </ScrollView>

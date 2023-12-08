@@ -3,7 +3,7 @@ using MongoDB.Bson.Serialization.Attributes;
 
 namespace Thesis.Models
 {
-    public class Ingredient
+    public class Ingredient : IItem
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]
@@ -40,5 +40,7 @@ namespace Thesis.Models
         [BsonElement("verified")]
         public bool Verified { get; set; }
 
+        [BsonElement("avg_rating")]
+        public double Avg_rating { get; set; }
     }
 }

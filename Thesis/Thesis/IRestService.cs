@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Threading.Tasks;
 using Thesis.Models;
 
@@ -9,7 +9,7 @@ namespace Thesis
     {
 
         User User { get; set; }
-        Task<List<T>> RefreshDataAsync<T>(string url);
+        Task<ObservableCollection<T>> RefreshDataAsync<T>(string url);
 
         Task SaveItemAsync<T>(string url, T item, bool isNewItem);
 

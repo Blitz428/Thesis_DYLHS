@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Thesis.Pages.drink_details"
+             Title="Adatlap">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Grid>
+                    <Label Text="Ital neve:" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
+                    <Label Grid.Column="1" Text="{Binding Item.Name}" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
+                </Grid>
+                <Grid>
+                    <Label Text="Ital magyarázata:" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
+                    <Label Grid.Column="1" Text="{Binding Item.Description}" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
+                </Grid>
+                <Grid>
+                    <Label Text="Kategória:" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
+                    <Label Grid.Column="1" Text="{Binding Item.Type}" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
+                </Grid>
+                <Grid>
+                    <Label Text="Értékelés:" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
+                    <Label Grid.Column="1" Text="{Binding Item.Avg_rating}" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold" IsVisible="{Binding IsDrink}"></Label>
+                </Grid>
+
+                <Label Text="Tápértékek 100ml-re:" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
+                <Grid>
+                    <Label Text="Alkohol (V/V%):" Margin="30,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
+                    <Label Margin="30,30,30,0" Text="{Binding Item.Alcohol}"></Label>
+                    <Label Grid.Row="1" Text="Kcal:" Margin="30,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
+                    <Label Grid.Row="1" Margin="30,30,30,0" Text="{Binding Item.Kcal}"></Label>
+                </Grid>
+                <Grid>
+                    <Label Text="Szénhidrát:" Margin="30,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
+                    <Label Margin="30,30,10,0" Text="{Binding Item.Carbon}"></Label>
+                    <Label Grid.Column="1" Text="Zsír:" Margin="15,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
+                    <Label Grid.Column="1" Margin="15,30,10,0"  Text="{Binding Item.Fat}"></Label>
+                    <Label Grid.Column="2" Text="Fehérje:" Margin="15,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
+                    <Label Grid.Column="2" Margin="15,30,10,0" Text="{Binding Item.Protein}"></Label>
+                </Grid>
+                
+                <Label Text="Mennyiség (g/ml):" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
+                <Entry Text="{Binding Quantity}" Keyboard="Numeric" Margin="10,10,0,0"></Entry>
+                
+                <Button x:Name="Add" Text="Fogyaszt" Margin="10,10,10,10" Clicked="Add_Clicked"></Button>
+
+                <Label Text="Hozzávalók:" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold" IsVisible="{Binding HaveIngredients}"></Label>
+                <ListView HeightRequest="225" IsVisible="{Binding HaveIngredients}" ItemsSource="{Binding Item.Ingredients}" IsEnabled="False">
+   
+                </ListView>
+                
+                <Label Text="Értékelések:" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold" IsVisible="{Binding IsDrink}"></Label>
+                <ListView HeightRequest="225" IsVisible="{Binding IsDrink}" ItemsSource="{Binding ItemRatings}" IsEnabled="False">
+
+                </ListView>
+
+                <Label Text="Értékelés írása:" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold" IsVisible="{Binding IsDrink}" ></Label>
+                <Entry Text="{Binding Review}" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold" IsVisible="{Binding IsDrink}" IsEnabled="{Binding IsConsumed}"></Entry>
+                
+                <Label Text="Pontszám (1-10):" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold" IsVisible="{Binding IsDrink}" ></Label>
+                <Slider  Maximum="10" Minimum="0" Value="{Binding Rate}"  Margin="10,10,0,0"  IsVisible="{Binding IsDrink}" IsEnabled="{Binding IsConsumed}" MinimumTrackColor="Black" MaximumTrackColor="Black"></Slider>
+                <Button x:Name="Rate" Text="Értékelem" IsVisible="{Binding IsDrink}" IsEnabled="{Binding IsConsumed}" Clicked="Rate_Clicked"></Button>
+
+                <CheckBox x:Name="Check"  IsVisible="{Binding IsDrink}" IsEnabled="{Binding IsConsumed}" CheckedChanged="Check_CheckedChanged"></CheckBox>
+
+
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

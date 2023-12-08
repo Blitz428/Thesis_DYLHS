@@ -1,12 +1,7 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
-using MongoDB.Bson;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using System.Text;
-using Thesis.Models;
 using System.Threading.Tasks;
+using Thesis.Models;
 
 namespace Thesis.ViewModels
 {
@@ -15,7 +10,7 @@ namespace Thesis.ViewModels
         IRestService restService;
         public IngredientCreatorViewModel(IRestService service)
         {
-            restService = service;       
+            restService = service;
         }
 
         Ingredient ingredient;
@@ -55,6 +50,7 @@ namespace Thesis.ViewModels
             IngredientToSave.Fat = Fat;
             IngredientToSave.Protein = Protein;
             IngredientToSave.Carbon = Carbon;
+            IngredientToSave.Avg_rating = 0;
             if (CurrentUser.Role.Equals("admin"))
             {
                 IngredientToSave.Verified = true;

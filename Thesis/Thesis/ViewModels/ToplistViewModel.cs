@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
 using System.Threading.Tasks;
 using Thesis.Models;
 
 namespace Thesis.ViewModels
 {
-    public class ToplistViewModel :INotifyPropertyChanged
+    public class ToplistViewModel : INotifyPropertyChanged
     {
         IRestService restService;
 
@@ -17,8 +16,27 @@ namespace Thesis.ViewModels
             restService = service;
         }
 
-        public async Task<User> GetTopUsers()
+        User currentUser;
+        public User CurrentUser { get { return currentUser; } set { currentUser = value; NotifyPropertyChanged(); } }
+
+        ObservableCollection<User> topUsers = new ObservableCollection<User>();
+        public ObservableCollection<User> TopUsers { get { return topUsers; } set { topUsers = value; NotifyPropertyChanged(); } }
+
+        ObservableCollection<User> users = new ObservableCollection<User>();
+        public ObservableCollection<User> Users { get { return users; } set { users = value; NotifyPropertyChanged(); } }
+
+        public async Task<ObservableCollection<User>> GetTopUsers()
         {
+            Users = await restService.RefreshDataAsync<User>("http://10.0.2.2:5096/api/Users");
+            TopUsers = new ObservableCollection<User>(Users.OrderByDescending(o => o.Points).ToList());
+
+            return TopUsers;
+
+        }
+
+        public void GetUser()
+        {
+            CurrentUser = restService.User;
 
 
         }

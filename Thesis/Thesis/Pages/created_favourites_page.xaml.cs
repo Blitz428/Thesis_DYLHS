@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -15,11 +11,18 @@ namespace Thesis.Pages
         public created_favourites_page()
         {
             BindingContext = App.OFViewModel;
-            
+
             InitializeComponent();
         }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            App.OFViewModel.GetOwnDrinks();
+            App.OFViewModel.GetOwnIngredients();
+            App.MPViewModel.SetUser();
+        }
 
-         async void newDrink_Clicked(object sender, EventArgs e)
+        async void newDrink_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushAsync(new drink_creator());
         }
@@ -29,10 +32,5 @@ namespace Thesis.Pages
             await Navigation.PushAsync(new ingredient_creator());
         }
 
-        async void refresh_Clicked(object sender, EventArgs e)
-        {
-            await App.OFViewModel.GetOwnDrinks();
-            await App.OFViewModel.GetOwnIngredients();
-        }
     }
 }

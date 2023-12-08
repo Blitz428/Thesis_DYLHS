@@ -1,5 +1,6 @@
 ﻿using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
+using System.Collections.ObjectModel;
 
 namespace Thesis.Models
 {
@@ -14,8 +15,8 @@ namespace Thesis.Models
         public string Created_by { get; set; }
 
 
-        [BsonElement("drink_name")]
-        public string Drink_name { get; set; }
+        [BsonElement("name")]
+        public string Name { get; set; }
 
         [BsonElement("description")]
         public string Description { get; set; }
@@ -44,10 +45,10 @@ namespace Thesis.Models
         public bool Verified { get; set; }
 
         [BsonElement("ingredients")]
-        public ICollection<string> Ingredients { get; set; }
+        public ObservableCollection<string> Ingredients { get; set; }
 
         [BsonElement("ratings")]
-        public ICollection<string> Ratings { get; set; }
+        public ObservableCollection<string> Ratings { get; set; }
 
 
     }
