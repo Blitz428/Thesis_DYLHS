@@ -102,14 +102,12 @@ namespace Thesis.ViewModels
 
             foreach (IItem item in Items)
             {
-
                 if (item.Name.Contains(SearchInput))
                 {
                     if (!SearchResults.Contains(item))
                     {
                         SearchResults.Add(item);
                     }
-
                 }
             }
             return SearchResults;

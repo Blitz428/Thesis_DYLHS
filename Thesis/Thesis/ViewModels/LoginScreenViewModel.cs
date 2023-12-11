@@ -9,8 +9,6 @@ namespace Thesis.ViewModels
     public class LoginScreenViewModel : INotifyPropertyChanged
     {
         IRestService restService;
-
-
         private string username = string.Empty;
         public string Username
         {
@@ -26,7 +24,6 @@ namespace Thesis.ViewModels
             }
         }
 
-
         private string password = string.Empty;
         public string Password
         {
@@ -41,7 +38,6 @@ namespace Thesis.ViewModels
 
             }
         }
-
 
         public LoginScreenViewModel(IRestService service)
         {

@@ -15,9 +15,7 @@ namespace Thesis
     {
         HttpClient client;
         JsonSerializerOptions serializerOptions;
-
         User user;
-
 
         public User User { get { return user; } set { User = value; } }
 

@@ -11,7 +11,7 @@
                     <Button x:Name="newIngredient" Grid.Column="1"  Text="Új hozzávaló..." Clicked="newIngredient_Clicked"></Button>
                 </Grid>
                 <Label Text="Saját italok:" Margin="10,5,0,0" FontAttributes="Bold" FontSize="Title"></Label>
-                <ListView x:Name="OwnDrinkView" ItemsSource="{Binding OwnDrinks}" BackgroundColor="LightBlue" HeightRequest="100" Margin="15,0,15,0" IsPullToRefreshEnabled="True"  >
+                <ListView x:Name="OwnDrinkView" ItemsSource="{Binding OwnDrinks}" BackgroundColor="LightBlue" HeightRequest="100" Margin="15,0,15,0"  >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextCell Text="{Binding Name}" Detail="{Binding Description}">
@@ -20,7 +20,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
                 <Label x:Name="OwnIngredientView"  Text="Saját hozzávalók:" Margin="10,5,0,0" FontAttributes="Bold" FontSize="Title" ></Label>
-                <ListView ItemsSource="{Binding OwnIngredients}" BackgroundColor="LightBlue" HeightRequest="100" Margin="15,0,15,0" IsPullToRefreshEnabled="True" >
+                <ListView ItemsSource="{Binding OwnIngredients}" BackgroundColor="LightBlue" HeightRequest="100" Margin="15,0,15,0"  >
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextCell Text="{Binding Name}" Detail="{Binding Description}">

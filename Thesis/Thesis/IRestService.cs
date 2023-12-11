@@ -7,14 +7,12 @@ namespace Thesis
 {
     public interface IRestService
     {
-
-        User User { get; set; }
         Task<ObservableCollection<T>> RefreshDataAsync<T>(string url);
 
         Task SaveItemAsync<T>(string url, T item, bool isNewItem);
 
         Task DeleteItemAsync(string url, string id);
-
+        User User { get; set; }
         Task<User> FindUserAsync(string url, string username, string password);
 
         Task<bool[]> CheckUserExistsAsync(string url, string username, string password, string email, double mobile);

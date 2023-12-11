@@ -93,7 +93,7 @@ namespace Thesis.Pages
             {
                 timer = new System.Timers.Timer();
                 timer.Interval = 1000;
-                timer.Elapsed += t_Tick;
+                timer.Elapsed += SecondElapsed;
                 TimeSpan ts = App.MPViewModel.TimeUntilClean - DateTime.Now;
                 cTimer = ts.ToString("d' Days 'h' Hours 'm' Minutes 's' Seconds'");
                 timer.Start();
@@ -102,7 +102,7 @@ namespace Thesis.Pages
         }
         string cTimer;
         System.Timers.Timer timer;
-        void t_Tick(object sender, EventArgs e)
+        void SecondElapsed(object sender, EventArgs e)
         {
             TimeSpan ts = App.MPViewModel.TimeUntilClean - DateTime.Now;
 
@@ -113,12 +113,20 @@ namespace Thesis.Pages
             {
 
                 TimeLabel.Text = cTimer;
+               
             });
 
             if (App.MPViewModel.BAC > 0)
             {
-                App.MPViewModel.BAC -= (0.015 / 3600);
-                App.MPViewModel.Progressbarvalue = System.Math.Round(App.MPViewModel.BAC / 0.5, 1);
+                MainThread.BeginInvokeOnMainThread(() =>
+                {
+
+                    App.MPViewModel.BAC -= (0.015 / 3600);
+                    App.MPViewModel.Progressbarvalue = App.MPViewModel.BAC / 0.5;
+
+
+                });
+
 
             }
 
@@ -194,8 +202,6 @@ namespace Thesis.Pages
             if ((ts.TotalMilliseconds < 0) || (ts.TotalMilliseconds < 1000))
             {
                 timer.Stop();
-
-
             }
         }
 

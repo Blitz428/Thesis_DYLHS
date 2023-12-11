@@ -20,7 +20,7 @@
                 </Grid>
                 <Grid>
                     <Label Text="Értékelés:" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
-                    <Label Grid.Column="1" Text="{Binding Item.Avg_rating}" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold" IsVisible="{Binding IsDrink}"></Label>
+                    <Label Grid.Column="1" Text="10" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold" IsVisible="{Binding IsDrink}"></Label>
                 </Grid>
 
                 <Label Text="Tápértékek 100ml-re:" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>

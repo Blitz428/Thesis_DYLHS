@@ -24,7 +24,7 @@
                     <Label Grid.Column="1" Margin="10,10,0,0" FontSize="Medium" Text="{Binding BACdisplay}" VerticalOptions="Center"></Label>
                 </Grid>
 
-                <ProgressBar Scale="5" Visual="Material" FlowDirection="LeftToRight" Progress="{Binding Progressbarvalue}"  ProgressColor="DarkSeaGreen"></ProgressBar>
+                <ProgressBar x:Name="progressbar" Scale="5" Visual="Material" FlowDirection="LeftToRight" Progress="{Binding Progressbarvalue}"  ProgressColor="DarkSeaGreen"></ProgressBar>
                 <Grid>
                     <Label x:Name="State" Grid.Column="0" Margin="10,10,0,0"  HorizontalTextAlignment="Center" FontSize="Medium" VerticalOptions="Center" FontAttributes="Bold"/>
                     <Button x:Name="Info" Grid.Column="1" Text="Info" Margin="100,10,0,0" Clicked="Info_Clicked" ></Button>
