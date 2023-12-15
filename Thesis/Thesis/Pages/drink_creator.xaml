@@ -24,9 +24,9 @@
                     <Label Text="Szénhidrát:" Margin="30,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
                     <Entry Margin="30,30,10,0" Keyboard="Numeric" Text="{Binding Carbon}"></Entry>
                     <Label Grid.Column="1" Text="Zsír:" Margin="15,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
-                    <Entry Grid.Column="1" Margin="10,10,10,0" Keyboard="Numeric" Text="{Binding Fat}"></Entry>
-                    <Label Grid.Column="2" Text="Fehérje:" Margin="15,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
-                    <Entry Grid.Column="2" Margin="10,10,10,0" Keyboard="Numeric" Text="{Binding Protein}"></Entry>
+                    <Entry Margin="30,30,10,0" Grid.Column="1"  Keyboard="Numeric" Text="{Binding Fat}"></Entry>
+                    <Label Margin="15,10,0,0" Grid.Column="2" Text="Fehérje:"  FontSize="Subtitle" FontAttributes="Bold"></Label>
+                    <Entry Margin="30,30,10,0" Grid.Column="2"  Keyboard="Numeric" Text="{Binding Protein}"></Entry>
                 </Grid>
                 <Label Text="Hozzávalók:" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
                 <SearchBar Placeholder="Hozzávaló rögzítése..." SearchButtonPressed="SearchBar_SearchButtonPressed" Text="{Binding SearchInput}"></SearchBar>

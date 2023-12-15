@@ -6,11 +6,11 @@
         <ScrollView>
             <StackLayout>
                 <Label Text="Hozzávaló neve:" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
-                <Label Text="{Binding IngredientToAdd.Name}"></Label>
+                <Label  Margin="30,0,10,0" Text="{Binding IngredientToAdd.Name}"></Label>
                 <Label Text="Hozzávaló magyarázata:" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
-                <Label HeightRequest="50" Text="{Binding IngredientToAdd.Description}"></Label>
+                <Label  Margin="30,0,10,0" HeightRequest="50" Text="{Binding IngredientToAdd.Description}"></Label>
                 <Label Text="Kategória:" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
-                <Label Text="{Binding IngredientToAdd.Type}"></Label>
+                <Label  Margin="30,0,10,0" Text="{Binding IngredientToAdd.Type}"></Label>
                 
                 <Label Text="Tápértékek 100g/ml mennyiségre:" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
                 <Grid>
@@ -23,9 +23,9 @@
                     <Label Text="Szénhidrát:" Margin="30,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
                     <Label Margin="30,30,10,0" Text="{Binding IngredientToAdd.Carbon}"></Label>
                     <Label Grid.Column="1" Text="Zsír:" Margin="15,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
-                    <Label Grid.Column="1" Margin="10,10,10,0"  Text="{Binding IngredientToAdd.Fat}"></Label>
+                    <Label  Margin="30,30,10,0" Grid.Column="1"  Text="{Binding IngredientToAdd.Fat}"></Label>
                     <Label Grid.Column="2" Text="Fehérje:" Margin="15,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
-                    <Label Grid.Column="2" Margin="10,10,10,0"  Text="{Binding IngredientToAdd.Protein}"></Label>
+                    <Label  Margin="30,30,10,0" Grid.Column="2"  Text="{Binding IngredientToAdd.Protein}"></Label>
                 </Grid>
                 <Label Text="Mennyiség (g/ml):" Margin="10,10,0,0" FontSize="Subtitle" FontAttributes="Bold"></Label>
                 <Entry Text="{Binding Quantity}" Keyboard="Numeric" Margin="10,10,0,0"></Entry>

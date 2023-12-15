@@ -91,10 +91,12 @@ namespace Thesis.ViewModels
         }
 
         string searchInput;
-        public string SearchInput { get { return searchInput; } set { searchInput = value; NotifyPropertyChanged(); } }
+        public string SearchInput { get { return searchInput; } 
+            set { searchInput = value; NotifyPropertyChanged(); } }
 
         ObservableCollection<IItem> searchResults = new ObservableCollection<IItem>();
-        public ObservableCollection<IItem> SearchResults { get { return searchResults; } set { searchResults = value; NotifyPropertyChanged(); } }
+        public ObservableCollection<IItem> SearchResults { get { return searchResults; } 
+            set { searchResults = value; NotifyPropertyChanged(); } }
 
         public async Task<ObservableCollection<IItem>> GetSearchResult()
         {
@@ -114,10 +116,12 @@ namespace Thesis.ViewModels
         }
 
         IItem selectedItem;
-        public IItem SelectedItem { get { return selectedItem; } set { selectedItem = value; NotifyPropertyChanged(); } }
+        public IItem SelectedItem { get { return selectedItem; }
+            set { selectedItem = value; NotifyPropertyChanged(); } }
 
         ObservableCollection<IItem> consumed = new ObservableCollection<IItem>();
-        public ObservableCollection<IItem> Consumed { get { return consumed; } set { consumed = value; NotifyPropertyChanged(); } }
+        public ObservableCollection<IItem> Consumed { get { return consumed; } 
+            set { consumed = value; NotifyPropertyChanged(); } }
         IItem itemtoadd;
         public async void ConsumeItem(double quantity)
         {

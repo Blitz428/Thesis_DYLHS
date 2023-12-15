@@ -141,6 +141,10 @@ namespace Thesis.ViewModels
             {
                 foreach (Ingredient item in AddedIngredients)
                 {
+                    if (DrinkToSave.Alcohol==0)
+                    {
+
+                    }
                     DrinkToSave.Alcohol += item.Alcohol;
                     DrinkToSave.Kcal += item.Kcal;
                     DrinkToSave.Fat += item.Fat;
