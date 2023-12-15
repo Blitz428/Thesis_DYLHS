@@ -1,0 +1,4 @@
+A projekt Startup beállításai: Multiple startup projects -  ThesisApi, Thesis.Android
+Bejelentkezés meglévő felhasználóval:
+	Felhasználónév: user3
+	Jelszó: user3
